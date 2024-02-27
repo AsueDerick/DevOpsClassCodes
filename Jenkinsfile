@@ -6,13 +6,13 @@ pipeline {
     agent none
     stages {
         stage('Clonerepo') {
-            agent { label 'slave01' }
+            agent any
             steps {
                 git 'https://github.com/bhasker-manikyala/DevOpsClassCodes.git'
             }
         }
         stage('Compile') {
-            agent { label 'slave01' }
+            agent any
             steps {
                 sh 'mvn compile'
             }
@@ -29,13 +29,13 @@ pipeline {
 }
         }
         stage(UnitTesting){
-            agent { label 'slave01' }
+            agent any
             steps {
                 sh 'mvn test'
             }
         }
         stage('Codecoverage'){
-            agent { label 'slave01' }
+            agent any
             steps {
                sh 'mvn verify'   
             }
